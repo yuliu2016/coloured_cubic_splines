@@ -63,7 +63,7 @@ class QuinticSpline:
 #     return CubicSpline(*pts[0]), CubicSpline(*pts[1])
 
 def spline_seg(p0, m0, p1, m1):
-    pts = list(zip(p0, m0, m0, (0, 0), m1, (0, 0)))
+    pts = list(zip(p0, m0, (0, 0), p1, m1, (0, 0)))
     return QuinticSpline(*pts[0]), QuinticSpline(*pts[1])
 
 display.fill((255, 255, 255))
@@ -101,8 +101,6 @@ def draw(c, d, tp):
     lx = xs[0]
     ly = ys[0]
     a = 200
-    if d:
-        a = 30
     c_min = (lc(256 - c[0] * 0.5), lc(256 - c[1] * 0.5), lc(256 - c[2] * 0.5))
     k_min = 1
     k_max = 0
@@ -126,14 +124,17 @@ def draw(c, d, tp):
         lx = nx
         ly = ny
 
+    kt = 0
     for f, t, w, k in pt:
         fc = ic(c, c_min, (k - k_min) / (k_max - k_min))
         if d:
-            pygame.draw.circle(display, fc, t, 2)
+            if kt % 6 == 0:
+                pygame.draw.circle(display, fc, t, 2)
         else:
-            pygame.draw.line(display, fc, f, t, 4)
+            pygame.draw.line(display, fc, f, t, 3)
         display.set_at((t[0] + w[0], t[1] - w[1]), fc)
         display.set_at((t[0] - w[0], t[1] + w[1]), fc)
+        kt += 1
 
 
 draw((0, 255, 0), False, spline_seg((100, -75), (400, 0), (445, -50), (0, 400)))  # L1 to cargo ship 2
