@@ -139,8 +139,8 @@ def draw(c, d, tp):
 
 draw((0, 255, 0), False, spline_seg((100, -75), (400, 0), (445, -50), (0, 400)))  # L1 to cargo ship 2
 draw((0, 0, 255), False, spline_seg((445, -50), (0, -50), (475, -200), (100, -200)))  # cargo ship 2 to pt
-draw((0, 255, 255), False, spline_seg((475, -200), (-200, 400), (20, -210), (-200, 0)))  # pt to loading station
-draw((255, 0, 0), False, spline_seg((20, -210), (200, 0), (210, -60), (0, 250)))  # loading station to pt
+draw((0, 255, 255), False, spline_seg((475, -200), (-200, 400), (20, -210), (-600, 0)))  # pt to loading station
+draw((255, 0, 0), False, spline_seg((20, -210), (600, 0), (210, -60), (0, 250)))  # loading station to pt
 draw((255, 255, 0), False, spline_seg((210, -60), (0, -250), (330, -220), (120, -80)))  # pt to left rocket
 
 draw((255, 0, 255), True, spline_seg((20, -210), (200, 0), (330, -220), (120, -80))) # dotted --
